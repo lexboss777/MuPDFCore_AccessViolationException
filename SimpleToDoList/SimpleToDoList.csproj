@@ -21,5 +21,7 @@
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.11" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+        <PackageReference Include="MuPDFCore" Version="1.10.1" />
+        <PackageReference Include="MuPDFCore.MuPDFRenderer" Version="1.10.1" />
     </ItemGroup>
 </Project>

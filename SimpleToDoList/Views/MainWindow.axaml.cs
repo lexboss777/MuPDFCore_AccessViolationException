@@ -11,4 +11,10 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void Button_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        var pdfW = new PdfWindow();
+        pdfW.ShowDialog(this);
+    }
 }

@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:mupdf="clr-namespace:MuPDFCore.MuPDFRenderer;assembly=MuPDFCore.MuPDFRenderer"
+		xmlns:anim="clr-namespace:Avalonia.Animation;assembly=MuPDFCore.MuPDFRenderer"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SimpleToDoList.Views.PdfWindow"
+		WindowState="Maximized"
+		Closing="Window_Closing"
+        Title="PdfWindow">
+	<Grid RowDefinitions="Auto, *">
+		<Grid Grid.Row="1">
+			<!--The PDF renderer.-->
+			<mupdf:PDFRenderer Name="MuPDFRenderer" Background="#F0F0F0" PageBackground="White" ZoomIncrement="1.75" ClipToBounds="True" 
+								Grid.Column="2">
+				<!--Fancy transition so that we can zoom or pan around smoothly. Disabling this would result in better performance, though.-->
+				<mupdf:PDFRenderer.Transitions>
+					<Transitions>
+						<anim:RectTransition Property="DisplayArea" Duration="0:0:0:0.1" />
+					</Transitions>
+				</mupdf:PDFRenderer.Transitions>
+			</mupdf:PDFRenderer>
+
+			<StackPanel Grid.Row="1"
+						Orientation="Vertical"
+						HorizontalAlignment="Right"
+						VerticalAlignment="Bottom"
+						Margin="0 0 5 10">
+
+				<TextBlock
+					Name="PageNumTextBlock"
+					HorizontalAlignment="Right"
+					Margin="0 0 5 10"
+					d:Text="0 / 1"/>
+
+				<StackPanel
+					Orientation="Horizontal"
+					Spacing="5">
+
+					<Button Name="BackBtn"
+							Click="Back_Click"
+							FontSize="20"
+							Foreground="White"
+							Background="Black"
+							Content="Back" />
+
+					<Button Name="NextBtn"
+							Click="Next_Click"
+							Foreground="White"
+							Background="Black"
+							FontSize="20"
+							Content="Next" />
+				</StackPanel>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</Window>
